@@ -66,4 +66,3 @@ int encontrarIndiceConta(const char* id, Conta contas[], int tamanho) {
     return -1; // Não encontrada
 }
 
-//Laylla
