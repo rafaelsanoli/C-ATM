@@ -11,4 +11,11 @@ int autenticarUsuario(const char* id, const char* senhaDigitada, Conta contas[],
 // Função para gerar hash da senha digitada
 void gerarHash(const char* senhaOriginal, char* senhaHashDestino);
 
+int iniciarAutenticacao(Conta contas[], int tamanho, char* idAutenticado);
+
+// NOVA função para encontrar índice da conta pelo ID
+int encontrarIndiceConta(const char* id, Conta contas[], int tamanho);
+
 #endif
+
+//Laylla

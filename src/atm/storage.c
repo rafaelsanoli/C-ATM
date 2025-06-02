@@ -9,7 +9,7 @@
 // Função que carrega as contas a partir do arquivo JSON e preenche o vetor de contas
 int carregar_contas(Conta contas[], int max_contas) {
     // Abre o arquivo JSON com as contas no modo leitura
-    FILE *fp = fopen("data/accounts.json", "r");
+    FILE *fp = fopen("../data/accounts.json", "r");
     if (fp == NULL) {
         // Se não conseguir abrir, imprime erro e retorna 0
         perror("Erro ao abrir o arquivo de contas");
@@ -43,11 +43,29 @@ int carregar_contas(Conta contas[], int max_contas) {
     for (size_t i = 0; i < n_contas; i++) {
         item = json_object_array_get_idx(array, i); // Pega a conta na posição i
 
-        // Copia os valores do JSON para os campos da struct Conta
-        strcpy(contas[i].nome, json_object_get_string(json_object_object_get(item, "nome")));
-        strcpy(contas[i].id, json_object_get_string(json_object_object_get(item, "id")));
-        strcpy(contas[i].senha_hash, json_object_get_string(json_object_object_get(item, "senha_hash")));
-        contas[i].saldo = json_object_get_double(json_object_object_get(item, "saldo"));
+        // Obtém os campos individualmente
+        struct json_object *j_nome = json_object_object_get(item, "nome");
+        struct json_object *j_id = json_object_object_get(item, "id");
+        struct json_object *j_senha = json_object_object_get(item, "senha_hash");
+        struct json_object *j_saldo = json_object_object_get(item, "saldo");
+
+        // Verifica se todos os campos existem
+        if (!j_nome || !j_id || !j_senha || !j_saldo) {
+            fprintf(stderr, "Erro: Campo ausente na conta %zu\n", i);
+            continue;
+        }
+
+        // Copia os valores do JSON para os campos da struct Conta de forma segura
+        strncpy(contas[i].nome, json_object_get_string(j_nome), sizeof(contas[i].nome) - 1);
+        contas[i].nome[sizeof(contas[i].nome) - 1] = '\0';
+
+        strncpy(contas[i].id, json_object_get_string(j_id), sizeof(contas[i].id) - 1);
+        contas[i].id[sizeof(contas[i].id) - 1] = '\0';
+
+        strncpy(contas[i].senha_hash, json_object_get_string(j_senha), sizeof(contas[i].senha_hash) - 1);
+        contas[i].senha_hash[sizeof(contas[i].senha_hash) - 1] = '\0';
+
+        contas[i].saldo = json_object_get_double(j_saldo);
     }
 
     json_object_put(parsed_json); // Libera a memória usada pelo JSON

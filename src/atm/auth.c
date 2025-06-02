@@ -55,3 +55,15 @@ int iniciarAutenticacao(Conta contas[], int tamanho, char* idAutenticado) {
     }
     return 0;
 }
+
+// NOVA FUNÇÃO PARA LOCALIZAR A CONTA PELO ID COM SEGURANÇA
+int encontrarIndiceConta(const char* id, Conta contas[], int tamanho) {
+    for (int i = 0; i < tamanho; i++) {
+        if (strcmp(contas[i].id, id) == 0) {
+            return i;
+        }
+    }
+    return -1; // Não encontrada
+}
+
+//Laylla
