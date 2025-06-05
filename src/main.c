@@ -6,40 +6,20 @@
 
 #define MAX_CONTAS 10
 
+
+#include <stdio.h> 
+#include "atm/ui.h"   
+                      
+
 int main() {
-    Conta contas[MAX_CONTAS];
-    int totalContas = 0;
+    // Mensagem inicial opcional, ou pode ir direto para a UI.
+    printf("Iniciando o Simulador C-ATM...\n");
 
-    printf("Iniciando carregamento de contas...\n");
+    // Chama a função principal da interface do usuário.
+    // Todo o loop de menu e interações acontecerão dentro desta função.
+    exibir_menu_principal();
 
-    // Carrega contas do arquivo (ajuste o nome do arquivo real se necessário)
-    totalContas = carregar_contas(contas, MAX_CONTAS);
-    
-    if (totalContas <= 0) {
-        printf("Erro ao carregar contas ou nenhuma conta encontrada.\n");
-        return 1;
-    }
-
-    printf("Contas carregadas com sucesso: %d\n", totalContas);
-
-    // Autenticação do usuário
-    int indiceConta = iniciarAutenticacao(contas, totalContas, "dados_contas.txt");
-    
-    if (indiceConta == -1) {
-        printf("Falha na autenticação. Encerrando o programa.\n");
-        return 1;
-    }
-
-    if (indiceConta < 0 || indiceConta >= totalContas) {
-    printf("Índice da conta inválido: %d\n", indiceConta);
-    return 1;
-    }
-
-    // Exibe os dados da conta autenticada
-    printf("\n=== Informações da Conta ===\n");
-    printf("Nome: %s\n", contas[indiceConta].nome);
-    printf("ID: %s\n", contas[indiceConta].id);
-    printf("Saldo: R$ %.2f\n", contas[indiceConta].saldo);
+    printf("Encerrando o Simulador C-ATM. Ate logo!\n");
 
     return 0;
 }

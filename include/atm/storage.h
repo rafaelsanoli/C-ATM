@@ -1,13 +1,15 @@
 #ifndef STORAGE_H
 #define STORAGE_H
 
+#define MAX_CONTAS 10 
+
 typedef struct {
-    char nome[20];           // Nome do proprietário da conta
-    char id[10];             // Identificador da conta (ex: D1, D2)
-    char senha_hash[65];     // Hash da senha (PIN)
-    double saldo;            // Saldo disponível
+    char nome[50]; 
+    char id[10];
+    char senha_hash[65]; 
+    double saldo;
 } Conta;
 
-int carregar_contas(Conta contas[], int max_contas);
+int carregar_contas(Conta contas[], int max_contas_parametro); 
 
 #endif // STORAGE_H
