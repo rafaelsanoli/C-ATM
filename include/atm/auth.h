@@ -5,16 +5,11 @@
 
 #include "storage.h" 
 
-// Função para autenticar usuário
-int autenticarUsuario(const char* id, const char* senhaDigitada, Conta contas[], int tamanho);
+void gerarHashAuth(const char* senhaOriginal, char* senhaHashDestino);
 
-// Função para gerar hash da senha digitada
-void gerarHash(const char* senhaOriginal, char* senhaHashDestino);
+int autenticarUsuario(const char* id, const char* pinDigitado, Conta contas[], int totalContas);
 
-int iniciarAutenticacao(Conta contas[], int tamanho, char* idAutenticado);
+int iniciarAutenticacao(Conta contas[], int totalContas, char* idAutenticadoBuffer);
 
-// NOVA função para encontrar índice da conta pelo ID
-int encontrarIndiceConta(const char* id, Conta contas[], int tamanho);
-
-#endif
+#endif // AUTH_H
 

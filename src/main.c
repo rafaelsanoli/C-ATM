@@ -1,25 +1,13 @@
 #include <stdio.h>
-#include <string.h>
-#include <atm/auth.h>
-#include <atm/account.h>
-#include <atm/storage.h>
-
-#define MAX_CONTAS 10
-
-
-#include <stdio.h> 
-#include "atm/ui.h"   
-                      
+#include "../include/atm/ui.h" // Inclui o cabeçalho da UI para ter acesso a exibir_menu_principal()
+                              // Certifique-se que este caminho está correto em relação à pasta src/
+                              // e que ui.h declara exibir_menu_principal()
 
 int main() {
-    // Mensagem inicial opcional, ou pode ir direto para a UI.
-    printf("Iniciando o Simulador C-ATM...\n");
-
-    // Chama a função principal da interface do usuário.
-    // Todo o loop de menu e interações acontecerão dentro desta função.
+    // A função exibir_menu_principal agora é responsável por todo o fluxo do ATM
     exibir_menu_principal();
 
-    printf("Encerrando o Simulador C-ATM. Ate logo!\n");
+    printf("\nSimulador C-ATM encerrado. Obrigado!\n");
 
     return 0;
 }
