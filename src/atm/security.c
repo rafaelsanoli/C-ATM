@@ -1,5 +1,3 @@
-// src/atm/security.c
-
 #include "atm/security.h"
 #include <stdio.h>
 #include <string.h>
