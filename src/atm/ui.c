@@ -12,58 +12,58 @@ int () {
 	int usuario_logado = 0;
 	
 	do{
-		system("clear || cls");
-		printf("1. login\n");
-		printf("2. Ver saldo\n");
-		printf("3. Sacar\n");
-		printf("4. Depositar\n");
-		printf("5. Ver extrato\n");
-		printf("6. Sair\n");
-		printf("Escolha uma opcao: ");
-		scanf("%d", &opcao);
+	system("clear || cls");
+	printf("1. login\n");
+	printf("2. Ver saldo\n");
+	printf("3. Sacar\n");
+	printf("4. Depositar\n");
+	printf("5. Ver extrato\n");
+	printf("6. Sair\n");
+	printf("Escolha uma opcao: ");
+	scanf("%d", &opcao);
 		
-		switch (opcao) {
-			case 1:
-				usuario_logado = autenticar_usuario();
+	switch (opcao) {
+		case 1:
+			usuario_logado = autenticar_usuario();
+			break;
+			case 2:
+			if(usuario_logado);
+				mostrar_saldo();
+				else
+				printf("Voce precisa fazer login primeiro!\n");
 				break;
-				case 2:
-					if(usuario_logado);
-					mostrar_saldo();
+				case 3:
+					if (usuario_logado)
+					realizar_deposito();
 					else
 					printf("Voce precisa fazer login primeiro!\n");
-					break;
-					case 3:
-						if (usuario_logado)
+					case 4:
+					if(usuario_logado)
 						realizar_deposito();
 						else
 						printf("Voce precisa fazer login primeiro!\n");
-						case 4:
+						else
+						printf("Voce precisa fazer login primeiro!\n");
+						break;
+						case 5:
 							if(usuario_logado)
-							realizar_deposito();
+							mostrar_extrato();
 							else
-							printf("Voce precisa fazer login primeiro!\n");
-							else
-							printf("Voce precisa fazer login primeiro!\n");
+							printf("Voce precisa fazer login primeiro!\n")
 							break;
-							case 5:
-								if(usuario_logado)
-								mostrar_extrato();
-								else
-								printf("Voce precisa fazer login primeiro!\n")
+							case 6:
+								printf("Saindo...\n");
 								break;
-								case 6:
-									printf("Saindo...\n");
-									break;
-									default:
-										printf("Opcao invalida!\n");
-									}
+								default:
+									printf("Opcao invalida!\n");
+								}
 									
-								printf("\nPressione Enter para continuar...");
-								getchar();
-								getchat();
-							}while (opcao !=6);
+							printf("\nPressione Enter para continuar...");
+							getchar();
+							getchat();
+						}while (opcao !=6);
 							
-							return 0;
+			return 0;
 						}
 						
 				
