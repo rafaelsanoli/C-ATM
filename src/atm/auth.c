@@ -88,3 +88,4 @@ int iniciarAutenticacao(Conta contas[], int totalContas, char* idAutenticadoBuff
     return -1;
 }
 
+//Oliver Arthur Souza Pinheiro
