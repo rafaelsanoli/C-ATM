@@ -289,3 +289,5 @@ bool gerar_salt(char *salt_buffer, size_t length_bytes_aleatorios) {
     free(random_bytes);
     return true;
 }
+
+//Rafael Santos
