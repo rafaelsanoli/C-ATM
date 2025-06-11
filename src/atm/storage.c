@@ -72,3 +72,5 @@ int carregar_contas(Conta contas[], int max_contas) {
 
     return (int)n_contas; // Retorna a quantidade de contas carregadas
 }
+
+//Anderson Vinicios
