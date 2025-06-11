@@ -97,3 +97,5 @@ void registrar_transacao(const char *tipo, const Conta *conta, double valor, con
     }
     printf("\n");
 }
+
+//Gabriel de Almeida
