@@ -78,3 +78,6 @@ bool validar_integridade_arquivo(const char *filepath, const char *expected_hash
 bool gerar_salt(char *salt_buffer, size_t length);
 
 #endif // SECURITY_H
+
+
+// RAFAEL SANTOS
