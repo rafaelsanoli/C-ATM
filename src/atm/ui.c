@@ -108,7 +108,8 @@ void exibir_menu_principal(void) {
 
             case 5:
                 if (indiceUsuarioLogado != -1) {
-                    printf("Funcionalidade de extrato ainda nao implementada.\n");
+                    // Linha modificada abaixo
+                    exibirExtrato(&contas[indiceUsuarioLogado]); // Chamando a nova função
                 } else {
                     printf("Voce precisa fazer login primeiro!\n");
                 }
@@ -145,5 +146,3 @@ void exibir_menu_principal(void) {
 
     } while (opcao != 7);
 }
-
-//Davi Costa

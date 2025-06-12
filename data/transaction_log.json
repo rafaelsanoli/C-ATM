@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "timestamp":"2025-06-12 18:30:29",
+    "tipo":"SAQUE",
+    "contaId":"D1",
+    "valor":4000.0
+  },
+  {
+    "timestamp":"2025-06-12 18:30:47",
+    "tipo":"DEPOSITO",
+    "contaId":"D1",
+    "valor":60000.0
+  },
+  {
+    "timestamp":"2025-06-12 18:32:18",
+    "tipo":"SAQUE",
+    "contaId":"D1",
+    "valor":50000.0
+  },
+  {
+    "timestamp":"2025-06-12 18:32:34",
+    "tipo":"DEPOSITO",
+    "contaId":"D1",
+    "valor":60000.0
+  },
+  {
+    "timestamp":"2025-06-12 18:33:54",
+    "tipo":"DEPOSITO",
+    "contaId":"D3",
+    "valor":50000.0
+  }
+]

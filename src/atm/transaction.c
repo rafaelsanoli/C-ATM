@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h> // Para strcpy, se necessário
 #include <time.h>   // Para simular data/hora
+#include <json-c/json.h> 
 
 // Função mock para depositar
 int depositar(Conta *conta, double valor) {
@@ -84,18 +85,43 @@ int transferir(Conta *origem, Conta *destino, double valor) {
 }
 
 // Função mock para registrar transação
+// Substitua a função registrar_transacao existente por esta
 void registrar_transacao(const char *tipo, const Conta *conta, double valor, const char *destino_id) {
+    const char *filepath = "../data/transaction_log.json";
+    
+    // 1. Ler o arquivo de log existente
+    FILE *fp = fopen(filepath, "r");
+    char buffer[8192]; // Buffer para ler o arquivo, aumente se o log ficar muito grande
+    if (fp != NULL) {
+        fread(buffer, 1, sizeof(buffer), fp);
+        fclose(fp);
+    } else {
+        // Se o arquivo não existe, começamos com um array vazio
+        strcpy(buffer, "[]");
+    }
+
+    struct json_object *parsed_json = json_tokener_parse(buffer);
+    if (!parsed_json) {
+         // Se o arquivo estiver vazio ou corrompido, cria um novo array
+        parsed_json = json_object_new_array();
+    }
+
+    // 2. Criar o objeto JSON para a nova transação
+    struct json_object *transacao_obj = json_object_new_object();
+    
+    // Pega a data e hora atual
     time_t agora = time(NULL);
     char buffer_tempo[30];
     strftime(buffer_tempo, sizeof(buffer_tempo), "%Y-%m-%d %H:%M:%S", localtime(&agora));
 
-    // Em uma implementação real, isso escreveria em transaction_log.json
-    printf("[LOG TRANSACAO %s] Tipo: %s, ContaID: %s, Nome: %s, Valor: %.2f",
-           buffer_tempo, tipo, conta->id, conta->nome, valor);
+    // Adiciona os campos ao objeto
+    json_object_object_add(transacao_obj, "timestamp", json_object_new_string(buffer_tempo));
+    json_object_object_add(transacao_obj, "tipo", json_object_new_string(tipo));
+    json_object_object_add(transacao_obj, "contaId", json_object_new_string(conta->id));
+    json_object_object_add(transacao_obj, "valor", json_object_new_double(valor));
+
     if (destino_id != NULL) {
         printf(", ContaDestinoID: %s", destino_id);
     }
     printf("\n");
 }
-
-//Gabriel de Almeida

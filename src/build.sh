@@ -3,7 +3,7 @@
 echo "Compilando o C-ATM..."
 
 # Lista de todos os arquivos fonte .c
-# Garanta que todos os seus módulos .c estejam aqui
+
 SOURCES=(
     "../src/main.c"
     "../src/atm/auth.c"
